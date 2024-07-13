@@ -2,6 +2,7 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import { Copy } from 'lucide-svelte';
+	import logo from '$lib/assets/logo.png';
 
 	let text = '';
 
@@ -18,13 +19,22 @@
 		) as HTMLInputElement;
 
 		if (inputElement) {
-			copyText(inputElement.value);
+			if (!text) {
+				return alert('please generate a ประโยค first');
+			}
+
+			copyText(inputElement.value).then(() => {
+				alert('Copied!');
+			});
 		}
 	};
 </script>
 
-<main class="flex h-screen w-screen flex-col items-center justify-center gap-2">
-	<div class="flex h-fit w-1/2 flex-row items-center justify-center gap-2">
+<main
+	class="absolute z-10 flex h-screen w-screen flex-col items-center justify-center gap-2 bg-opacity-75 bg-[url('$lib/assets/bg.png')] bg-[length:300px_300px]"
+>
+	<img src={logo} alt="logo" width="500" />
+	<div class="flex h-[100px] w-1/2 flex-row items-center justify-center gap-2">
 		<form class="flex h-full w-full items-center space-x-2" on:submit={copyInput}>
 			<Input
 				type="text"
@@ -40,3 +50,4 @@
 	</div>
 	<Button class="h-fit text-xl">อุปโลกน์ the word!</Button>
 </main>
+<div class="absolute z-0 h-screen w-screen bg-[#A7122D] bg-cover"></div>
