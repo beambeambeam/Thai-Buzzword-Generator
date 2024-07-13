@@ -35,6 +35,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource/charm": "^5.0.20",
 		"@fontsource/open-sans": "^5.0.28",
 		"bits-ui": "^0.21.12",
 		"clsx": "^2.1.1",

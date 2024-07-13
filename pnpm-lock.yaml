@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/charm':
+        specifier: ^5.0.20
+        version: 5.0.20
       '@fontsource/open-sans':
         specifier: ^5.0.28
         version: 5.0.28
@@ -267,6 +270,9 @@ packages:
 
   '@floating-ui/utils@0.2.4':
     resolution: {integrity: sha512-dWO2pw8hhi+WrXq1YJy2yCuWoL20PddgGaqTgVe4cOS9Q6qklXCiA1tJEqX6BEwRNSCP84/afac9hd4MS+zEUA==}
+
+  '@fontsource/charm@5.0.20':
+    resolution: {integrity: sha512-Q74lVL6rNMs9fya1GTVYplZgpaEMZe5ToDnp28sIgMqnWxZ4OL9j4AzmQpJMDkuAwlCeoLzITvskM1TSr+5LaA==}
 
   '@fontsource/open-sans@5.0.28':
     resolution: {integrity: sha512-hBvJHY76pJT/JynGUB5EXWhnzjYfLdcMn655J5p1v9lTT9HdQSy+keq2KPVXO2Htlg998BBa3p6u/jlrZ6w0kg==}
@@ -1743,6 +1749,8 @@ snapshots:
       '@floating-ui/utils': 0.2.4
 
   '@floating-ui/utils@0.2.4': {}
+
+  '@fontsource/charm@5.0.20': {}
 
   '@fontsource/open-sans@5.0.28': {}
 
