@@ -31,7 +31,7 @@
 </script>
 
 <main
-	class="absolute z-10 flex h-screen w-screen flex-col items-center justify-center gap-2 bg-opacity-75 bg-[url('$lib/assets/bg.png')] bg-[length:300px_300px]"
+	class="absolute z-10 flex h-screen w-screen flex-col items-center justify-center gap-2 bg-opacity-75 bg-[url('$lib/assets/bg.png')] bg-[length:200px_200px]"
 >
 	<img src={logo} alt="logo" width="500" />
 	<div class="flex h-[100px] w-1/2 flex-row items-center justify-center gap-2">
@@ -44,7 +44,7 @@
 				class="h-fit text-xl text-black"
 			/>
 			<Button variant="outline" type="submit" class="flex flex-row gap-4" disabled={input_disabled}
-				><Copy />คักลอกประโยคนี้</Button
+				><Copy /></Button
 			>
 		</form>
 	</div>
