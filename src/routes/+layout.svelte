@@ -4,9 +4,3 @@
 </script>
 
 <slot></slot>
-
-<style>
-	:global(body) {
-		font-family: 'Charm', cursive;
-	}
-</style>
