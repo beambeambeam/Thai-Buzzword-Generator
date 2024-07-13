@@ -4,9 +4,7 @@
 	import { Copy } from 'lucide-svelte';
 	import logo from '$lib/assets/logo.png';
 
-	let text = '';
-
-	let input_disabled = text ? true : false;
+	let inputValue = '';
 
 	const copyText = async (text: string) => {
 		await navigator.clipboard.writeText(text);
@@ -39,12 +37,15 @@
 			<Input
 				type="text"
 				placeholder="ที่ว่างสำหรับคำ"
-				disabled
-				value={text}
+				disabled={inputValue ? false : true}
 				class="h-fit text-xl text-black"
+				bind:value={inputValue}
 			/>
-			<Button variant="outline" type="submit" class="flex flex-row gap-4" disabled={input_disabled}
-				><Copy /></Button
+			<Button
+				variant="outline"
+				type="submit"
+				class="flex flex-row gap-4"
+				disabled={inputValue ? false : true}><Copy /></Button
 			>
 		</form>
 	</div>
