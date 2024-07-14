@@ -39,6 +39,7 @@
 		"@fontsource/open-sans": "^5.0.28",
 		"bits-ui": "^0.21.12",
 		"clsx": "^2.1.1",
+		"d3-fetch": "^3.0.1",
 		"lucide-svelte": "^0.408.0",
 		"tailwind-merge": "^2.4.0",
 		"tailwind-variants": "^0.2.1"
