@@ -1,12 +1,15 @@
 <script lang="ts">
-	import Button from '$lib/components/ui/button/button.svelte';
+	import { Button, buttonVariants } from '$lib/components/ui/button/index.js';
 	import Input from '$lib/components/ui/input/input.svelte';
-	import { Copy, Loader } from 'lucide-svelte';
+	import { Copy, Loader, QrCode } from 'lucide-svelte';
 	import logo from '$lib/assets/logo.png';
+	import qrcode from '$lib/assets/qrcode.png';
 	import type { ButtonEventHandler } from 'bits-ui';
 	import { fetchWords, type Row } from '$lib/sheet';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
+
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
 
 	let inputValue = '';
 	let words: Promise<Row[]>;
@@ -90,6 +93,18 @@
 	<meta property="og:description" content="พูดดีนะ แต่ไม่พูดดีกว่า 🗣️❌ - Stipud Honkathack 8" />
 </svelte:head>
 
+<div class="absolute z-20 flex w-screen justify-end p-3 text-white">
+	<Dialog.Root>
+		<Dialog.Trigger
+			><Button variant="ghost" class="h-fit w-fit p-2"><QrCode class="fill-current" /></Button
+			></Dialog.Trigger
+		>
+		<Dialog.Content class="flex w-fit flex-col items-center justify-center">
+			<Dialog.Header class="w-fit text-4xl">QR Code</Dialog.Header>
+			<img src={qrcode} alt="logo" width="400" class="select-text" />
+		</Dialog.Content>
+	</Dialog.Root>
+</div>
 <main
 	class="absolute z-10 flex h-screen w-screen flex-col items-center justify-center gap-2 bg-opacity-75 bg-[url('$lib/assets/bg.png')] bg-[length:200px_200px]"
 >
@@ -100,7 +115,7 @@
 				<Loader class="spinner inline-block size-6" />
 			</div>
 		{:then words}
-			<div in:fade class="mx-5 flex w-full flex-row gap-1 justify-center">
+			<div in:fade class="mx-5 flex w-full flex-row justify-center gap-1">
 				<Input
 					type="text"
 					placeholder="ที่ว่างสำหรับคำ"
