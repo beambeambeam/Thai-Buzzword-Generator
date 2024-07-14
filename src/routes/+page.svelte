@@ -105,9 +105,7 @@
 		</Dialog.Content>
 	</Dialog.Root>
 </div>
-<main
-	class="absolute z-10 flex h-screen w-screen flex-col items-center justify-center gap-2 bg-opacity-75 bg-[url('$lib/assets/bg.png')] bg-[length:200px_200px]"
->
+<main class="z-10 flex w-screen flex-col items-center justify-center gap-2 bg-opacity-75">
 	<img src={logo} alt="logo" width="500" class="select-text" />
 	<div class="flex h-[100px] w-full min-w-64 flex-row items-center justify-center gap-2 space-x-2">
 		{#await words}
@@ -137,23 +135,43 @@
 			type="submit"
 			disabled={inputValue ? false : true}
 			on:click={copyInput}
-			><Copy />
+			><Copy class="shrink-0 text-black" />
 			<span class="sr-only">คัดลอก</span>
 		</Button>
 		<Button size="default" on:click={generateBuzzwords} class="h-fit text-xl"
 			>อุปโลกน์ the word!</Button
 		>
 	</div>
+	<p class="mt-5 text-center text-lg text-white">
+		หรือกด <strong>Spacebar</strong> หรือ <strong>Enter</strong> เพื่อสร้างคำใหม่
+	</p>
+	<section>
+		<p class="text-outline text-center">หรือสร้างเอง</p>
+		<div class="p-2">
+			{#if wordData}
+				<table class="border/60 w-full rounded-lg bg-white/70 text-foreground">
+					<thead>
+						<tr>
+							<th class="p-2">nouns</th>
+							<th class="p-2">verbs</th>
+							<th class="p-2">adverbs</th>
+							<th class="p-2">adjective</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-nowrap p-3 align-top"> {@html wordData.nouns.join('<br>')} </td>
+							<td class="text-nowrap p-3 align-top"> {@html wordData.verbs.join('<br>')} </td>
+							<td class="text-nowrap p-3 align-top"> {@html wordData.adverbs.join('<br>')} </td>
+							<td class="text-nowrap p-3 align-top"> {@html wordData.adjective.join('<br>')} </td>
+						</tr>
+					</tbody>
+				</table>
+			{:else}
+				<div out:fade class="rounded-lg border border-slate-50/30 bg-white p-5 shadow-sm">
+					<Loader class="spinner inline-block size-6" />
+				</div>
+			{/if}
+		</div>
+	</section>
 </main>
-<div class="absolute z-0 h-screen w-screen bg-[#A7122D] bg-cover"></div>
-
-<style>
-	@keyframes spin {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	}
-</style>
