@@ -93,7 +93,7 @@
 	<meta property="og:description" content="พูดดีนะ แต่ไม่พูดดีกว่า 🗣️❌ - Stipud Honkathack 8" />
 </svelte:head>
 
-<div class="absolute z-20 flex w-screen justify-end p-3 text-white">
+<div class="absolute z-20 flex w-full justify-end p-3 text-white">
 	<Dialog.Root>
 		<Dialog.Trigger
 			><Button variant="ghost" class="h-fit w-fit p-2"><QrCode class="fill-current" /></Button
@@ -105,9 +105,11 @@
 		</Dialog.Content>
 	</Dialog.Root>
 </div>
-<main class="z-10 flex w-screen flex-col items-center justify-center gap-2 bg-opacity-75">
-	<img src={logo} alt="logo" width="500" class="select-text" />
-	<div class="flex h-[100px] w-full min-w-64 flex-row items-center justify-center gap-2 space-x-2">
+<main
+	class="max-w-screen z-10 flex flex-col items-center justify-center justify-center gap-2 overflow-hidden bg-opacity-75 p-3"
+>
+	<img src={logo} alt="logo" width="500" class="max-w-full select-text" />
+	<div class="flex w-full min-w-64 flex-row items-center justify-center gap-2 space-x-2">
 		{#await words}
 			<div out:fade class="rounded-lg border border-slate-50/30 bg-white p-5 shadow-sm">
 				<Loader class="spinner inline-block size-6" />
@@ -145,28 +147,28 @@
 	<p class="mt-5 text-center text-lg text-white">
 		หรือกด <strong>Spacebar</strong> หรือ <strong>Enter</strong> เพื่อสร้างคำใหม่
 	</p>
-	<section>
+	<section class="m-auto flex w-full flex-col justify-center">
 		<p class="text-outline text-center">หรือสร้างเอง</p>
-		<div class="p-2">
+		<div class="w-full overflow-x-auto p-4">
 			{#if wordData}
-				<table class="border/60 w-full rounded-lg bg-white/70 text-foreground">
-					<thead>
-						<tr>
-							<th class="p-2">nouns</th>
-							<th class="p-2">verbs</th>
-							<th class="p-2">adverbs</th>
-							<th class="p-2">adjective</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="text-nowrap p-3 align-top"> {@html wordData.nouns.join('<br>')} </td>
-							<td class="text-nowrap p-3 align-top"> {@html wordData.verbs.join('<br>')} </td>
-							<td class="text-nowrap p-3 align-top"> {@html wordData.adverbs.join('<br>')} </td>
-							<td class="text-nowrap p-3 align-top"> {@html wordData.adjective.join('<br>')} </td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="border/60 m-auto flex w-min flex-row rounded-lg bg-white/70 text-foreground">
+					<div class="text-nowrap p-3 align-top">
+						<h2 class="text-2xl">Nouns</h2>
+						{@html wordData.nouns.join('<br>')}
+					</div>
+					<div class="text-nowrap p-3 align-top">
+						<h2 class="text-2xl">Verbs</h2>
+						{@html wordData.verbs.join('<br>')}
+					</div>
+					<div class="text-nowrap p-3 align-top">
+						<h2 class="text-2xl">Adverbs</h2>
+						{@html wordData.adverbs.join('<br>')}
+					</div>
+					<div class="text-nowrap p-3 align-top">
+						<h2 class="text-2xl">Adjective</h2>
+						{@html wordData.adjective.join('<br>')}
+					</div>
+				</div>
 			{:else}
 				<div out:fade class="rounded-lg border border-slate-50/30 bg-white p-5 shadow-sm">
 					<Loader class="spinner inline-block size-6" />
